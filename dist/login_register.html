@@ -1,0 +1,181 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+	<meta http-equiv="Cache-Control" content="no-siteapp"/>
+	<meta name="apple-mobile-web-app-capable" content="yes">
+	<meta name="format-detection" content="telephone=no, email=no">
+	<meta name="wap-font-scale" content="no">
+	<meta name="renderer" content="webkit">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="screen-orientation" content="portrait">
+	<meta name="x5-orientation" content="portrait">
+	<meta name="viewport" content="initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no">
+	<title>粤港澳大湾区人才创新园</title>
+	<meta name="keywords" content="your keywords">
+	<meta name="description" content="your description">
+	<link rel="stylesheet" href="styles/login.min.css">
+	<script src="scripts/libs/toREM.min.js"></script>
+</head>
+<body>
+<div id="login">
+	<div class="container">
+		<div class="login" style="background: url(images/login-bg.png);">
+			<section class="login-logo">
+				<img src="images/logo.png" alt="logo">
+				<h1 class="title">粤港澳大湾区人才创新园</h1>
+			</section>
+
+			<section class="login-detail">
+				<!-- 登录注册-->
+				<ul class="login-tab-title" v-show="doneType != 2">
+					<li class="login-tab-item "
+						:class="{active: doneType == 0}"
+						@click="changeDoneType(0)">
+						<span>登录</span>
+					</li>
+					<li class="login-tab-item"
+						:class="{active: doneType == 1}"
+						@click="changeDoneType(1)">
+						<span>注册</span>
+					</li>
+				</ul>
+				<!-- 忘记密码 -->
+				<div class="login-tab-title" v-show="doneType == 2">
+					<span class="back" @click="changeDoneType(0)"> ＜ 返回</span>
+					<p class="forget-keyCode">忘记密码</p>
+				</div>
+
+				<div class="login-tab-info">
+					<ul class="login-info" v-show="doneType == 0">
+						<li class="info-item" style="background-image:url(images/phone.png);">
+							<input type="number"
+								   placeholder="请输入手机号"
+								   v-model="loginPhone"
+								   @blur="phoneCheck">
+						</li>
+						<li class="info-item" style="background-image: url(images/password.png);">
+							<input type="password"
+								   placeholder="请输入密码"
+								   v-model="loginPassword"
+								   @blur="checkEmpty('loginPassword')"
+							>
+						</li>
+					</ul>
+					<ul class="register-info" v-show="doneType == 1">
+						<li class="info-item" style="background-image:url(images/phone.png);">
+							<input type="number"
+								   placeholder="请输入手机号"
+								   v-model="registerPhone"
+								   @blur="phoneCheck">
+						</li>
+						<li class="info-item" style="background-image: url(images/testCode.png);">
+							<input type="text"
+								   placeholder="请输入验证码"
+								   v-model="registerCode"
+								   @blur="checkEmpty('registerCode')">
+							<span class="register-code"
+							@click="timeCutDone"
+							:class="{disabled:disabledSend}">{{sendCode}}</span>
+						</li>
+						<li class="info-item" style="background-image: url(images/password.png);">
+							<input type="password"
+								   placeholder="请输入密码"
+								   v-model="registerPassword"
+								   @blur="passwordCheck('register')">
+						</li>
+						<li class="info-item" style="background-image: url(images/password.png);">
+							<input type="password"
+								   placeholder="请再次输入密码"
+								   v-model="registerPassWordConfirm"
+								   @blur="passwordConfirm('register')">
+						</li>
+						<li class="info-item" style="background-image: url(images/email.png);">
+							<input type="text"
+								   placeholder="请设置您的邮箱"
+								   v-model="registerEmail"
+								   @blur="emailCheck">
+						</li>
+						<li class="info-item" style="background-image: url(images/person.png);">
+							<input type="text"
+								   placeholder="请输入您的真实姓名"
+								   v-model="registerName"
+								   @blur="checkEmpty('registerName')"
+							>
+						</li>
+						<li class="info-item" style="background-image: url(images/nickName.png);">
+							<input type="text"
+								   placeholder="请输入您的昵称"
+								   v-model="registerNickName"
+								   @blur="checkEmpty('registerNickName')">
+						</li>
+					</ul>
+					<ul class="forget-info" v-show="doneType == 2">
+						<li class="info-item" style="background-image:url(images/phone.png);">
+							<input type="number"
+								   placeholder="请输入手机号"
+								   v-model="forgetPhone"
+								   @blur="phoneCheck">
+						</li>
+						<li class="info-item" style="background-image: url(images/testCode.png);">
+							<input type="text"
+								   placeholder="请输入验证码"
+								   v-model="forgetCode"
+								   @blur="checkEmpty('forgetCode')"
+							>
+							<span class="register-code"
+								  @click="timeCutDone"
+								  :class="{disabled:disabledSend}">{{sendCode}}</span>
+						</li>
+						<li class="info-item" style="background-image: url(images/password.png);">
+							<input type="password"
+								   placeholder="设置您的新密码"
+								   v-model="forgetPassword"
+								   @blur="passwordCheck('forget')"
+							>
+						</li>
+						<li class="info-item" style="background-image: url(images/password.png);">
+							<input type="password"
+								   placeholder="确认您的新密码"
+								   v-model="forgetPasswordConfirm"
+								   @blur="passwordConfirm('forget')">
+						</li>
+					</ul>
+				</div>
+				<div class="login-btn-wrap">
+					<div class="login-btn btn"
+						 :class="{active: canLogin}"
+						 v-show="doneType == 0"
+						 @click="loginSubmit">
+						登录
+					</div>
+					<div class="register-btn btn"
+						 :class="{active: canRegister}"
+						 v-show="doneType == 1"
+						 @click="registerSubmit"
+					>
+						注册
+					</div>
+					<div class="login-btn btn"
+						 :class="{active: canSubmit}"
+						 v-show="doneType == 2"
+						 @click="forgetSubmit">
+						确定
+					</div>
+
+					<p class="login-forget-password" v-show="doneType == 0">
+						<a @click="changeDoneType(2)">忘记密码</a>
+					</p>
+				</div>
+				<p class="login-warn-info" v-show="showWarnInfo">{{warnInfo}}</p>
+			</section>
+		</div>
+	</div>
+</div>
+
+<!--<script src="https://cdn.bootcss.com/zepto/1.2.0/zepto.min.js"></script>-->
+<!--<script src="scripts/libs/zepto-touch.min.js"></script>-->
+<script src="https://cdn.jsdelivr.net/npm/vue"></script>
+<script src="scripts/homePage.min.js"></script>
+</body>
+</html>

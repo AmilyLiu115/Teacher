@@ -1,0 +1,24 @@
+$mainColor: #902831 ;
+$disabledColor: #E9E9E9;
+
+
+.container {
+    position: relative;
+    max-width: 750px;
+    margin: 0 auto;
+}
+
+
+@mixin border {
+    position: relative;
+    &:after {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        content: '';
+        width: 100%;
+        height: 1px;
+        transform: translateY(.5);
+        background-color: #E9E9E9;
+    }
+}

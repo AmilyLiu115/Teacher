@@ -1,0 +1,115 @@
+@charset "utf-8";
+
+@import "common";
+
+/*css reset*/
+html, body {
+    position: relative;
+    margin: 0 auto;
+    max-width: 750px;
+    min-width: 320px;
+    width: 100%;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "PingFang SC", "Helvetica Neue", STHeiti, "Microsoft Yahei", Tahoma, Simsun, sans-serif;
+    line-height: 1.2;
+    -webkit-text-size-adjust: 100%;
+    text-size-adjust: 100%;
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+}
+
+body, div, dl, dt, dd, ul, ol, li, h1, h2, h3, h4, h5, h6, form, input, textarea, p, th, td, hr, button, article, aside, details, figcaption, figure, footer, header, menu, nav, section {
+    margin: 0;
+    padding: 0;
+}
+
+input, select, textarea {
+    font-size: 100%;
+}
+input {
+    outline: none;
+    border: none;
+    padding: .1rem .05rem;
+}
+:-moz-placeholder { /* Mozilla Firefox 4 to 18 */
+    color: #B5B5B5; opacity:1;
+}
+
+::-moz-placeholder { /* Mozilla Firefox 19+ */
+    color: #B5B5B5;opacity:1;
+}
+
+input:-ms-input-placeholder{
+    color: #B5B5B5;opacity:1;
+}
+
+input::-webkit-input-placeholder{
+    color: #B5B5B5;opacity:1;
+}
+
+
+table {
+    border-collapse: collapse;
+    border-spacing: 0;
+}
+
+img {
+    display: block;
+    width: 100%;
+    border: 0;
+}
+
+em, i, th {
+    font-style: normal;
+    font-weight: 500;
+}
+
+ol, ul {
+    list-style: none;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-size: 100%;
+    font-weight: 500;
+}
+
+a {
+    display: block;
+    text-decoration: none;
+}
+
+button, input, select {
+    border: 0;
+    border-radius: 0;
+    background: none;
+    appearance: none;
+    -webkit-appearance: none;
+}
+
+textarea {
+    resize: none;
+}
+
+::-webkit-search-cancel-button {
+    display: none;
+}
+
+/*css reset end*/
+
+//  常见问题css处理
+
+// 消除 transition 闪屏
+// -webkit-transform-style: preserve-3d;  设置内嵌的元素在 3D 空间如何呈现：保留 3D
+// -webkit-backface-visibility: hidden;   (设置进行转换的元素的背面在面对用户时是否可见：隐藏)
+
+// ios使用自带滚动时增加弹性滑动效果
+// -webkit-overflow-scrolling: touch;
+
+// 禁止用户选中文字
+// -webkit-user-select: none;
+
+// 禁止 iOS 弹出各种操作窗口
+// -webkit-touch-callout: none;
+
+//  常见问题css处理End

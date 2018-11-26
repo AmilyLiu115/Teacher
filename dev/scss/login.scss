@@ -1,0 +1,177 @@
+@import "libs/reset";
+
+.login {
+    width: 100%;
+    height: 100%;
+    padding-bottom: .52rem;
+    -webkit-background-size: cover;
+    background-size: cover;
+    background-attachment: fixed;
+
+    &-logo {
+        text-align: center;
+        padding-top: 1.2rem;
+        img {
+            display: inline-block;
+            width:  .94rem;
+        }
+        .title {
+            font-size: .3rem;
+            color: #fff;
+            line-height: 1;
+            margin-top: .24rem;
+        }
+    }
+
+    &-detail {
+        position: relative;
+        width: 6.5rem;
+        min-height: 8.22rem;
+        margin: .7rem auto 0;
+        background-color: #fff;
+        border-radius: 10px;
+        padding: .4rem .7rem;
+        box-sizing: border-box;
+    }
+
+    &-tab {
+        &-title {
+            position: relative;
+            font-size: 0;
+            margin-bottom: .5rem;
+            .back {
+                position: absolute;
+                top: 50%;
+                transform: translateY(-50%);
+                left: 0;
+                font-size: .26rem;
+                z-index: 9;
+            }
+            .forget-keyCode {
+                font-size: .3rem;
+                position: relative;
+                text-align: center;
+                color: $mainColor;
+                &:after {
+                    content: '';
+                    position: absolute;
+                    width: .52rem;
+                    height: .06rem;
+                    background-color: $mainColor;
+                    left: 50%;
+                    transform: translateX(-50%);
+                    bottom: -0.14rem;
+
+                }
+            }
+        }
+        
+        &-item   {
+            display: inline-block;
+            width: 50%;
+            text-align: center;
+            color: #333;
+            font-size: .3rem;
+
+            &.active {
+                color: $mainColor;
+                span {
+                    position: relative;
+                    &:after {
+                        content: '';
+                        position: absolute;
+                        width: 100%;
+                        height: .06rem;
+                        background-color: $mainColor;
+                        left: 0;
+                        bottom: -.14rem;
+                    }
+                }
+
+            }
+        }
+
+        &-info {
+            .info-item {
+                position: relative;
+                font-size: .28rem;
+                line-height: .9rem;
+                padding-left: .64rem;
+                background-repeat: no-repeat;
+                -webkit-background-size: .24rem auto;
+                background-size: .24rem auto;
+                background-position: left center ;
+                @include border;
+
+                .register-code {
+                    position: absolute;
+                    top: 50%;
+                    transform: translateY(-50%);
+                    right: 0;
+                    z-index: 3;
+                    padding:0 .1rem;
+                    line-height: .52rem;
+                    color: $mainColor;
+                    border: 1px solid $mainColor;
+                    border-radius: .04rem;
+                    &.disabled {
+                        border: none;
+                        color: #B5B5B5;
+                        background: #E9E9E9;
+                    }
+                }
+            }
+        }
+    }
+
+    &-btn-wrap {
+        .btn {
+            width: 5.1rem;
+            line-height: .72rem;
+            font-size: .28rem;
+            text-align: center;
+            border-radius: .1rem;
+            color: #fff;
+            background-color: $disabledColor;
+            cursor: pointer;
+            &.login-btn {
+                margin-top: .81rem;
+            }
+
+            &.register-btn {
+                margin-top: .41rem;
+            }
+
+            &.active {
+                background-color: $mainColor;
+            }
+        }
+    }
+
+    &-forget-password {
+        text-align: right;
+        line-height: 1;
+        margin-top: .2rem;
+        font-size: .22rem;
+        a {
+            color: $mainColor;
+        }
+    }
+
+    &-warn-info {
+        font-size: .24rem;
+        color: #fff;
+        position: absolute;
+        width: 5.2rem;
+        line-height: .6rem;
+        background-color: rgba(0,0,0,.8);
+        -webkit-border-radius: .3rem;
+        -moz-border-radius: .3rem;
+        border-radius: .3rem;
+        left: 50%;
+        transform: translateX(-50%);
+        top: .5rem;
+        text-align: center;
+        z-index: 2;
+    }
+}
